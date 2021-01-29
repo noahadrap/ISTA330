@@ -6,5 +6,6 @@ For example given the input array [5, 6, 1], the running sum is
 */
 
 var runningSum = function(input) {
-   
+    const cumulativeSum = (sum => value => sum += value)(0);
+    return ([5, 10, 3, 2].map(cumulativeSum));
 };
