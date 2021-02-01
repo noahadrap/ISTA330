@@ -10,6 +10,14 @@ Example: input: cookies = [3, 5, 8] , extraCookies = 8
  */
 
  var canGetEqualCookies = function(cookies, extraCookies) {
-     
-    
+     var cookieMax = Math.max.apply(null, cookies);
+     for (i = 0; i < cookies.length; i++) {
+        while (cookies[i] != cookieMax && extraCookies != 0) {
+                cookies[i] += 1;
+                extraCookies -= 1;
+        }
+      }
+      const allEqual = arr => arr.every( v => v === arr[0] );
+      return allEqual(cookies);
+
  };
