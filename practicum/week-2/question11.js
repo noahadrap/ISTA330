@@ -10,5 +10,13 @@ output: [5, 5, 2, 2, 2, 2]
 */
 
 var decode = function(input) {
-
+    count = 0
+    output=[]
+    for (i=0; i < input.length; i+=2) {
+        count = input[i];
+        for (j=0; j<count; j++) {
+            output.push(input[i+1])
+        }
+  }
+  return output;
 };
