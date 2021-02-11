@@ -12,5 +12,17 @@ output: 2
 */
 
 var m_element = function(input) {
-
+    var count= 0;
+    for(i=0;i<input.length;i++){
+        for (j=0;j<input.length;j++) {
+            if (input[j] == input[i]) {
+                count += 1
+            }
+        }
+        if (count > (input.length/2)){
+            return input[i];
+        }
+        count = 0
+    }
+    return -1;
 };

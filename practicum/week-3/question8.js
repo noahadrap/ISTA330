@@ -13,5 +13,21 @@ output: 3
 */
 
 var d_integer = function(input) {
-
+    var count= 0;
+    var nums = [];
+    for(i=0;i<input.length;i++){
+        for (j=0;j<input.length;j++) {
+            if (input[j] == input[i]) {
+                count += 1
+            }
+        }
+        if (count == input[i]){
+            nums.push(input[i]);
+        }
+        count = 0
+    }
+    if (nums.length > 0) {
+        return Math.max.apply(null, nums);
+    }
+    return -1;
 };

@@ -12,5 +12,8 @@ output: [[1,4], [2,5], [3,6]]
 */
 
 var transpose = function(M) {
-
+    return Object.keys(M[0]).map(function(c) {
+        return M.map(function(r) { return r[c]; });
+    });
+   
 };
