@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -8,7 +9,7 @@
     <title>Document</title>
 </head>
 
-<body>
+<body onload="myFunction()">
     <div id="question">
         1. Display the flowers as per question 1.<br />
         2. Add the following functionality to the page:<br />
@@ -83,8 +84,8 @@
         }
         let daffodil = new Flower('Daffodil', 'daffodil.png');
         let cherryblossom = new Flower('Cherry blossom', 'cherryblossom.png');
-        let lily = new Flower('Lily', 'lily.png');
-        let daisy = new Flower('Daisy', 'daisy.png');
+        let lily = new Flower('Lily', 'lily.jpg');
+        let daisy = new Flower('Daisy', 'daisy.jpg');
         let sunflower = new Flower('Sunflower', 'sunflower.png');
         let tulip = new Flower('Tulip', 'tulip.png');
         let rose = new Flower('Rose', 'rose.png');
@@ -100,6 +101,71 @@
             rose,
             waterlily
         ];
+        function myFunction() {
+           var text = ''
+           text += "<table>";
+            var counter = 0;
+           for (i = 0; i < flowers.length; i++) {
+               if (counter == 4) {
+                   text += "</tr>"
+                   counter = 0;
+               }
+               else if (counter == 0) {
+                   text += "<tr>"
+               }
+               var flower = flowers[i]
+               text += "<td>" + '<img src="images/' + flowers[i].picture + 
+                '" id="' + flowers[i].name + '" onclick="sortFunction(' + "this.id" +')">' + "<br>" + flowers[i].name + "</td>";
+               counter +=1;
+            };
+            document.getElementById("flowersDiv").innerHTML = text;
+    };
+
+    </script>
+    <script>
+        function sortFunction(flower) {
+            flowersSorted = flowers.sort(compare);
+            var n=0;
+            for (i = 0; i < flowersSorted.length; i++) {
+                if (flower == flowersSorted[i].name) {
+                    n=i;
+                }
+            }
+
+            var text = ''
+           text += "<table>";
+            var counter = 0;
+            for (i = 0; i < flowersSorted.length; i++) {
+               if (counter == 4) {
+                   text += "</tr>"
+                   counter = 0;
+               }
+               else if (counter == 0) {
+                   text += "<tr>"
+               }
+               var flower = flowersSorted[i]
+               text += "<td>" + '<img src="images/' + flowersSorted[n].picture + 
+                '" id="' + flowersSorted[n].name + '" onclick="sortFunction(' + "this.id" +')">' + "<br>" + flowersSorted[n].name + "</td>";
+               counter +=1;
+               if (n == (flowersSorted.length -1)) {
+                   n = 0;
+               }
+               else {
+                   n+=1;
+               }
+            };
+            document.getElementById("flowersDiv").innerHTML = text;
+    };
+
+    function compare( a, b ) {
+  if ( a.name < b.name ){
+    return -1;
+  }
+  if ( a.name > b.name ){
+    return 1;
+  }
+  return 0;
+};
     </script>
 </body>
 
