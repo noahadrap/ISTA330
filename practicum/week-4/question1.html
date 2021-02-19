@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<body onload=myFunction()>
     <div id="question">
         Using the array flowers below, 
         display the flowers. Use the div 'flowersDiv'.
@@ -15,7 +15,6 @@
         and under the image display its name.
     </div>
     <div id='flowersDiv'>
-
     </div>
     <script>
         /*
@@ -51,6 +50,23 @@
              rose,
              waterlily
        ];
+       function myFunction() {
+           var text = ''
+           text += "<table>";
+            var counter = 0;
+           for (i = 0; i < flowers.length; i++) {
+               if (counter == 4) {
+                   text += "</tr>"
+                   counter = 0;
+               }
+               else if (counter == 0) {
+                   text += "<tr>"
+               }
+               text += "<td>" + '<img src="images/' + flowers[i].picture + '">' + "<br>" + flowers[i].name + "</td>";
+               counter +=1;
+            };
+            document.getElementById("flowersDiv").innerHTML = text;
+    };
     </script>
 </body>
 </html>
